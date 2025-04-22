@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive EMS Website Design | Rusiru Pramod</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <link rel="stylesheet" href="EMSstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">EmployeeMS</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search..." id="searchInput">
+            <i class='bx bx-search'></i>
+        </div>
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#about">About</a>
+            <a href="#service">Service</a>
+            <a href="#Latest">Latest</a>
+            <a href="#contact">Contact</a>
+            <a href="#qrSection"></a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+
+
+
+    <section class="home" id="home" style="background-image: url('case-hr-sentiment-analysis.webp');">
+
+
+
+        <div class="home-content">
+            <h3><br><br><br>Welcome </h3>
+            <h1>Employee Management Service</h1>
+            <h3>Your smart solution for <span class="multiple-text">EveryDay</span></h3>
+
+            <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+
+            <p>
+                A powerful and user-friendly system designed to simplify HR operations.
+                Manage employees, departments, attendance, and performance with ease.
+                Improve productivity and decision-making with real-time data and automation features.
+            </p>
+
+            <div class="social-media">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+            <a href="#qrSection" id="getStartedBtn" class="bbtn" onclick="generateRandomQR()">Get Started</a>
+            <a href="#" class="btn">Learn More</a>
+
+        </div>
+    </section>
+    <section>
+        <div class="qr-layout">
+            <div class="overlay-image">
+                <img src="src/qrscan.jpg" alt="QR Scan" />
+            </div>
+
+            <section id="qrSection" class="qr-generator-section">
+                <h2>QR Code Generator</h2>
+                <p>This QR code is generated randomly and securely when you click "Get Started".</p>
+                <div class="qr-container">
+                    <canvas id="qrCanvas" width="200" height="200"></canvas>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <h1>Employee Management Dashboard</h1>
+
+
+            <div class="chart-container">
+                <h3>Weekly Attendance Overview</h3>
+                <canvas id="attendanceChart"></canvas>
+            </div>
+
+            <div class="employee-status">
+                <h3>Current Employees Clocked In</h3>
+                <p id="currentEmployeeCount">0</p>
+            </div>
+
+            <div class="employee-in-out-status">
+                <h3>Employee In/Out Times</h3>
+                <table id="employeeTimes">
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>In-Time</th>
+                            <th>Out-Time</th>
+                            <th>Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="employee-counts">
+                    <h4>Total Male Employees: <span id="maleCount">0</span></h4>
+                    <h4>Total Female Employees: <span id="femaleCount">0</span></h4>
+                </div>
+            </div>
+
+            <div class="table-container" id="allEmployees">
+                <h3>All Employees</h3>
+                <button onclick="loadAll()">Load All</button>
+                <a href="#EMS" id="btn" class="btn">EMS</a>
+                <table id="empTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="EMS" id="EMS">
+        <div class="container">
+            <h1>Employee Management</h1>
+            <div class="form-container" id="addUpdate">
+                <h3>Add / Update Employee</h3>
+                <input type="number" id="id" placeholder="Employee ID">
+                <input type="text" id="name" placeholder="Employee Name">
+                <input type="email" id="email" placeholder="Employee Email">
+                <input type="number" id="salary" placeholder="Employee Salary">
+                <button onclick="addEmployee()">Add</button>
+                <button onclick="updateEmployee()">Update</button>
+            </div>
+
+            <div class="search-container" id="search">
+                <h3>Search Employee by ID</h3>
+                <input type="number" id="searchId" placeholder="Employee ID">
+                <button onclick="searchEmployee()">Search</button>
+                <p id="searchResult"></p>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="src/ems_about.jpg" alt="EMS Overview Image">
+        </div>
+
+        <div class="about-content">
+            <h2 class="heading">About <span>EMS</span></h2>
+            <h3>Efficient Workforce Management</h3>
+            <p>
+                The Employee Management System (EMS) is an all-in-one solution designed to streamline HR operations and
+                simplify workforce management.
+                It helps organizations manage employee records, track attendance, oversee departmental structure, and
+                monitor performance metrics all in one place.
+
+                EMS provides a user-friendly dashboard, real-time data insights, and powerful automation features to
+                boost efficiency and productivity.
+                Whether you're a small business or a large enterprise, EMS ensures that your HR tasks are centralized,
+                secure, and easily accessible.
+
+                From onboarding to daily attendance and performance reviews, EMS covers every stage of the employee
+                lifecycle.
+                Built with modern web technologies, it offers an intuitive interface and scalable architecture to
+                support growing teams and businesses.
+            </p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section class="service" id="service">
+        <h2 class="heading">Our <span>Services</span></h2>
+        <div class="services-contain">
+
+            <div class="services-box">
+                <i class='bx bx-user'></i>
+                <h3>Employee Management</h3>
+                <p>Manage and organize employee records, including personal details, job roles, attendance, and
+                    performance.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+
+            <div class="services-box">
+                <i class='bx bx-calendar'></i>
+                <h3>Attendance Tracking</h3>
+                <p>Track employee attendance in real time, generate reports, and monitor working hours for efficient
+                    payroll management.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+
+            <div class="services-box">
+                <i class='bx bx-line-chart'></i>
+                <h3>Performance Evaluation</h3>
+                <p>Evaluate employee performance using key metrics, set goals, and provide feedback for continuous
+                    improvement.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="Latest" id="Latest">
+        <h2 class="heading">Latest <span>Modules</span></h2>
+
+        <div class="projects-container">
+
+            <div class="projects-box">
+                <img src="EAM.webp" alt="img">
+                <div class="projects-layer">
+                    <h4>Enterprise Asset Management System (EAM/CMMS)</h4>
+                    <p>Asset Management & Tracking, Work Order Management, Preventive Maintenance Scheduling, BIM
+                        Integration</p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+
+            <div class="projects-box">
+                <img src="SPM.webp" alt="img">
+                <div class="projects-layer">
+                    <h4>Space Management System</h4>
+                    <p>Create and manage space inventory, visualize floor-plans, space planning, and occupancy mapping.
+                    </p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+
+            <div class="projects-box">
+                <img src="TAM.webp" alt="img">
+                <div class="projects-layer">
+                    <h4>Time and Attendance System</h4>
+                    <p>Attendance tracking, leave management, HR/payroll system integration, mobile SMS-based employee
+                        clock-in/out.</p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+
+
+            <div class="projects-box">
+                <img src="HRM.jpg" alt="img">
+                <div class="projects-layer">
+                    <h4>Human Resource Management System</h4>
+                    <p>Manage HR functions from onboarding to offboarding, improving employee engagement and retention.
+                    </p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+
+
+            <div class="projects-box">
+                <img src="PMS.jpg" alt="img">
+                <div class="projects-layer">
+                    <h4>Payroll Management System</h4>
+                    <p>Manage contract and permanent employees' payroll processing with varied pay periods.</p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+
+
+            <div class="projects-box">
+                <img src="images (1).jpg" alt="img">
+                <div class="projects-layer">
+                    <h4>One-touch FM using Smart IoT</h4>
+                    <p>One-touch helpdesk calls, work orders, and facility management tasks via IoT-enabled devices.</p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact<span>Me!</span></h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Fll Name">
+                <input type="text" placeholder="Email Address">
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Mobile Number">
+                <input type="text" placeholder="Email Subject">
+            </div>
+            <textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="You Message"></textarea>
+            <input type="submit" values="Send Message" class="btn">
+        </form>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-text">
+            <p>copyright &copy; 2025 by Rusiru Pramod | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bxs-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+    <script src="EMSscript.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+
+
+</body>
+
+</html>
