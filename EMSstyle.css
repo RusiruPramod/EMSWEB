@@ -747,11 +747,13 @@ canvas {
 /* Responsive */
 @media screen and (max-width: 768px) {
     /* QR Layout Adjustments */
+    
     .qr-layout {
         flex-direction: column; /* Stack sections vertically on small screens */
         align-items: center;
         justify-content: center;
     }
+    
 
     .overlay-image {
         flex: 0 0 100%;
@@ -982,6 +984,70 @@ canvas {
 }
 
  
+@media screen and (max-width: 768px) {
+  /* Make employee in/out and employee list tables responsive */
+  .employee-in-out-status table,
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .employee-in-out-status thead,
+  .table-container thead {
+    display: none; /* Hide table headers on small screens */
+  }
+
+  .employee-in-out-status tbody tr,
+  .table-container tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .employee-in-out-status tbody td,
+  .table-container tbody td {
+    display: block;
+    text-align: right;
+    padding: 8px;
+    position: relative;
+    padding-left: 50%;
+    border-bottom: 1px solid #eee;
+  }
+
+  .employee-in-out-status tbody td::before,
+  .table-container tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    width: 45%;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* Stack the male/female count vertically */
+  .employee-counts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  /* Stretch the buttons full-width */
+  .table-container .btn,
+  .table-container button {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+
+
 
 
 
